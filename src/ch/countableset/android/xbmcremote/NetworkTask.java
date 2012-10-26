@@ -13,9 +13,9 @@ import ch.countableset.android.library.JSONRPCException;
 import ch.countableset.android.library.JSONRPCParams;
 
 public class NetworkTask extends AsyncTask<NetworkObject, Context, Void> {
-	
-//	private static String TAG = "NetworkTask";
-	
+
+	// private static String TAG = "NetworkTask";
+
 	protected Void doInBackground(NetworkObject... arg0) {
 		JSONRPCClient client = JSONRPCClient.create("http://192.168.1.28:8080/jsonrpc", JSONRPCParams.Versions.VERSION_2);
 		client.setConnectionTimeout(2000);
@@ -26,20 +26,21 @@ public class NetworkTask extends AsyncTask<NetworkObject, Context, Void> {
 			params.put("playerid", 1);
 			jsonRequest.put("id", UUID.randomUUID().hashCode());
 			jsonRequest.put("jsonrpc", "2.0");
-			if(arg0[0].getCommand().equals("Player.SeekForward")) {
+			if (arg0[0].getCommand().equals("Player.SeekForward")) {
 				jsonRequest.put("method", "Player.Seek");
 				params.put("value", "smallforward");
 				jsonRequest.put("params", params);
-			} else if(arg0[0].getCommand().equals("Player.SeekRewind")) {
+			} else if (arg0[0].getCommand().equals("Player.SeekRewind")) {
 				jsonRequest.put("method", "Player.Seek");
 				params.put("value", "smallbackward");
 				jsonRequest.put("params", params);
 			} else {
 				jsonRequest.put("method", arg0[0].getCommand());
 			}
-            if(arg0[0].getCommand().equals("Player.PlayPause") || arg0[0].getCommand().equals("Player.Stop")) {
-            	jsonRequest.put("params", params);
-            }
+			if (arg0[0].getCommand().equals("Player.PlayPause")
+					|| arg0[0].getCommand().equals("Player.Stop")) {
+				jsonRequest.put("params", params);
+			}
 			client.call(jsonRequest);
 		} catch (JSONRPCException e) {
 			e.printStackTrace();
@@ -50,9 +51,10 @@ public class NetworkTask extends AsyncTask<NetworkObject, Context, Void> {
 		}
 		return null;
 	}
-	
+
 	protected void onProgressUpdate(Context... context) {
-		Toast.makeText(context[0], "Could Not Connect!", Toast.LENGTH_SHORT).show();
-    }
+		Toast.makeText(context[0], "Could Not Connect!", Toast.LENGTH_SHORT)
+				.show();
+	}
 
 }
