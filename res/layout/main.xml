@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tableLayout1"
+    android:layout_width="match_parent"  
+    android:layout_height="match_parent"  
+    android:shrinkColumns="*"  
+    android:stretchColumns="*" >
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_height="wrap_content"  
+        android:layout_width="match_parent"  
+        android:gravity="center_horizontal" >
+
+        <ImageButton
+            android:id="@+id/btn_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/up_arrow"
+            android:background="@null"
+            android:gravity="center"
+            android:layout_span="6"
+            android:padding="20dip"
+            android:contentDescription="@string/btn_up" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+        
+        <ImageButton
+            android:id="@+id/btn_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_span="8"
+            android:background="@null"
+            android:contentDescription="@string/btn_left"
+            android:gravity="center"
+            android:padding="20dip"
+            android:src="@drawable/left_arrow" />
+        
+        <ImageButton
+            android:id="@+id/btn_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_span="6"
+            android:background="@null"
+            android:contentDescription="@string/btn_select"
+            android:gravity="center"
+            android:padding="20dip"
+            android:src="@drawable/circle_ok" />
+        
+        <ImageButton
+            android:id="@+id/btn_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/right_arrow"
+            android:background="@null"
+            android:gravity="center"
+            android:layout_span="8"
+            android:padding="20dip"
+            android:contentDescription="@string/btn_right" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_height="wrap_content"  
+        android:layout_width="match_parent"  
+        android:gravity="center_horizontal" >
+        
+        <ImageButton
+            android:id="@+id/btn_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/down_arrow"
+            android:background="@null"
+            android:gravity="center"
+            android:layout_span="6"
+            android:padding="20dip"
+            android:contentDescription="@string/btn_down" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow5"
+        android:layout_height="wrap_content"  
+        android:layout_width="match_parent"  
+        android:gravity="center_horizontal" >
+        
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/unshare"
+            android:background="@null"
+            android:gravity="center"
+            android:layout_span="6"
+            android:padding="20dip"
+            android:contentDescription="@string/btn_back" />
+        
+        <ImageButton
+            android:id="@+id/btn_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/home"
+            android:background="@null"
+            android:gravity="center"
+            android:layout_span="6"
+            android:padding="20dip"
+            android:contentDescription="@string/btn_home" />
+        
+    </TableRow>
+    
+    
+    <TableRow
+        android:id="@+id/tableRow4"
+        android:layout_height="wrap_content"  
+        android:layout_width="match_parent"  
+        android:gravity="center_horizontal" >
+        
+        <ImageButton
+            android:id="@+id/btn_rewind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/rewind"
+            android:background="@null"
+            android:gravity="center"
+            android:layout_span="6"
+            android:padding="20dip"
+            android:contentDescription="@string/btn_rewind" />
+        
+        <ImageButton
+            android:id="@+id/btn_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/play"
+            android:background="@null"
+            android:gravity="center"
+            android:layout_span="6"
+            android:padding="20dip"
+            android:contentDescription="@string/btn_play" />
+        
+        <ImageButton
+            android:id="@+id/btn_stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/stop"
+            android:background="@null"
+            android:gravity="center"
+            android:layout_span="6"
+            android:padding="20dip"
+            android:contentDescription="@string/btn_stop" />
+        
+        <ImageButton
+            android:id="@+id/btn_fastforward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/forward"
+            android:background="@null"
+            android:gravity="center"
+            android:layout_span="6"
+            android:padding="20dip"
+            android:contentDescription="@string/btn_fastforward" />
+        
+    </TableRow>
+
+</TableLayout>
