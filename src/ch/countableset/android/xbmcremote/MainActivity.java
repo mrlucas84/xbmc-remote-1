@@ -36,43 +36,44 @@ public class MainActivity extends Activity {
 	}
 
 	public void onClick(View v) {
-		NetworkObject object = null;
+		String command = null;
 		switch(v.getId()) {
 			case R.id.btn_left:
-				object = new NetworkObject(getApplicationContext(), "Input.Left");
+				command = "Input.Left";
 				break;
 			case R.id.btn_right:
-				object = new NetworkObject(getApplicationContext(), "Input.Right");
+				command = "Input.Right";
 				break;
 			case R.id.btn_up:
-				object = new NetworkObject(getApplicationContext(), "Input.Up");
+				command = "Input.Up";
 				break;
 			case R.id.btn_down:
-				object = new NetworkObject(getApplicationContext(), "Input.Down");
+				command = "Input.Down";
 				break;
 			case R.id.btn_select:
-				object = new NetworkObject(getApplicationContext(), "Input.Select");
+				command = "Input.Select";
 				break;
 			case R.id.btn_back:
-				object = new NetworkObject(getApplicationContext(), "Input.Back");
+				command = "Input.Back";
 				break;
 			case R.id.btn_home:
-				object = new NetworkObject(getApplicationContext(), "Input.Home");
+				command =  "Input.Home";
 				break;
 			case R.id.btn_play:
-				object = new NetworkObject(getApplicationContext(), "Player.PlayPause");
+				command = "Player.PlayPause";
 				break;
 			case R.id.btn_stop:
-				object = new NetworkObject(getApplicationContext(), "Player.Stop");
+				command = "Player.Stop";
 				break;
 			case R.id.btn_fastforward:
-				object = new NetworkObject(getApplicationContext(), "Player.SeekForward");
+				command = "Player.SeekForward";
 				break;
 			case R.id.btn_rewind:
-				object = new NetworkObject(getApplicationContext(), "Player.SeekRewind");
+				command = "Player.SeekRewind";
 				break;
 		}
-		if(object != null) {
+		if(command != null) {
+			NetworkObject object = new NetworkObject(getApplicationContext(), command);
 			new NetworkTask().execute(object);
 		}
 	}
