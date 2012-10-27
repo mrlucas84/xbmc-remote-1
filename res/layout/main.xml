@@ -54,7 +54,7 @@
             android:contentDescription="@string/btn_select"
             android:gravity="center"
             android:padding="20dip"
-            android:src="@drawable/circle_ok"
+            android:src="@drawable/select"
             android:onClick="onClick" />
         
         <ImageButton
@@ -99,7 +99,7 @@
             android:id="@+id/btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/unshare"
+            android:src="@drawable/back"
             android:background="@null"
             android:gravity="center"
             android:layout_span="6"
