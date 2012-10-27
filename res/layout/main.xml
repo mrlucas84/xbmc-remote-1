@@ -21,7 +21,8 @@
             android:gravity="center"
             android:layout_span="6"
             android:padding="20dip"
-            android:contentDescription="@string/btn_up" />
+            android:contentDescription="@string/btn_up"
+            android:onClick="onClick" />
 
     </TableRow>
 
@@ -40,7 +41,8 @@
             android:contentDescription="@string/btn_left"
             android:gravity="center"
             android:padding="20dip"
-            android:src="@drawable/left_arrow" />
+            android:src="@drawable/left_arrow"
+            android:onClick="onClick" />
         
         <ImageButton
             android:id="@+id/btn_select"
@@ -52,7 +54,8 @@
             android:contentDescription="@string/btn_select"
             android:gravity="center"
             android:padding="20dip"
-            android:src="@drawable/circle_ok" />
+            android:src="@drawable/circle_ok"
+            android:onClick="onClick" />
         
         <ImageButton
             android:id="@+id/btn_right"
@@ -63,7 +66,8 @@
             android:gravity="center"
             android:layout_span="8"
             android:padding="20dip"
-            android:contentDescription="@string/btn_right" />
+            android:contentDescription="@string/btn_right"
+            android:onClick="onClick" />
     </TableRow>
 
     <TableRow
@@ -81,7 +85,8 @@
             android:gravity="center"
             android:layout_span="6"
             android:padding="20dip"
-            android:contentDescription="@string/btn_down" />
+            android:contentDescription="@string/btn_down"
+            android:onClick="onClick" />
     </TableRow>
 
     <TableRow
@@ -99,7 +104,8 @@
             android:gravity="center"
             android:layout_span="6"
             android:padding="20dip"
-            android:contentDescription="@string/btn_back" />
+            android:contentDescription="@string/btn_back"
+            android:onClick="onClick" />
         
         <ImageButton
             android:id="@+id/btn_home"
@@ -110,7 +116,8 @@
             android:gravity="center"
             android:layout_span="6"
             android:padding="20dip"
-            android:contentDescription="@string/btn_home" />
+            android:contentDescription="@string/btn_home"
+            android:onClick="onClick" />
         
     </TableRow>
     
@@ -130,7 +137,8 @@
             android:gravity="center"
             android:layout_span="6"
             android:padding="20dip"
-            android:contentDescription="@string/btn_rewind" />
+            android:contentDescription="@string/btn_rewind"
+            android:onClick="onClick" />
         
         <ImageButton
             android:id="@+id/btn_play"
@@ -141,7 +149,8 @@
             android:gravity="center"
             android:layout_span="6"
             android:padding="20dip"
-            android:contentDescription="@string/btn_play" />
+            android:contentDescription="@string/btn_play"
+            android:onClick="onClick" />
         
         <ImageButton
             android:id="@+id/btn_stop"
@@ -152,7 +161,8 @@
             android:gravity="center"
             android:layout_span="6"
             android:padding="20dip"
-            android:contentDescription="@string/btn_stop" />
+            android:contentDescription="@string/btn_stop"
+            android:onClick="onClick" />
         
         <ImageButton
             android:id="@+id/btn_fastforward"
@@ -163,7 +173,8 @@
             android:gravity="center"
             android:layout_span="6"
             android:padding="20dip"
-            android:contentDescription="@string/btn_fastforward" />
+            android:contentDescription="@string/btn_fastforward"
+            android:onClick="onClick" />
         
     </TableRow>
 

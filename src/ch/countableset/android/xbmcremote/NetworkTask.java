@@ -6,7 +6,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.widget.Toast;
 import ch.countableset.android.library.JSONRPCClient;
 import ch.countableset.android.library.JSONRPCException;
@@ -17,7 +19,11 @@ public class NetworkTask extends AsyncTask<NetworkObject, Context, Void> {
 	// private static String TAG = "NetworkTask";
 
 	protected Void doInBackground(NetworkObject... arg0) {
-		JSONRPCClient client = JSONRPCClient.create("http://192.168.1.28:8080/jsonrpc", JSONRPCParams.Versions.VERSION_2);
+		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(arg0[0].getContext());
+		String ipAddress = sharedPref.getString(SettingsActivity.IP_ADDRESS, "");
+		String port = sharedPref.getString(SettingsActivity.PORT_NUMBER, "");
+		
+		JSONRPCClient client = JSONRPCClient.create("http://" + ipAddress + ":" + port + "/jsonrpc", JSONRPCParams.Versions.VERSION_2);
 		client.setConnectionTimeout(2000);
 		client.setSoTimeout(2000);
 		JSONObject jsonRequest = new JSONObject();

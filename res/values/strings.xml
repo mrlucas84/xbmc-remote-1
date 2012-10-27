@@ -3,6 +3,7 @@
     <string name="app_name">XBMC Remote</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">XBMC Remote</string>
+    <string name="title_activity_settings">Settings</string>
     
     <string name="btn_left">Left</string>
     <string name="btn_right">Right</string>
@@ -15,5 +16,15 @@
     <string name="btn_play">Play</string>
     <string name="btn_stop">Stop</string>
     <string name="btn_fastforward">Forward</string>
+    
+    <string name="pref_cat_network">Network</string>
+    
+    <string name="pref_ip_address_title">IP Address</string>
+    <string name="pref_ip_address_summary">The IP Address of the device running XBMC</string>
+    <string name="pref_ip_address_default">192.168.1.2</string>
+    
+    <string name="pref_port_title">Port Number</string>
+    <string name="pref_port_summary">The port number of the device running XBMC</string>
+    <string name="pref_port_default">8080</string>
 
 </resources>
