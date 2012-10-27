@@ -59,8 +59,7 @@ public class NetworkTask extends AsyncTask<NetworkObject, Context, Void> {
 	}
 
 	protected void onProgressUpdate(Context... context) {
-		Toast.makeText(context[0], "Could Not Connect!", Toast.LENGTH_SHORT)
-				.show();
+		Toast.makeText(context[0], "Could Not Connect!", Toast.LENGTH_SHORT).show();
 	}
 
 }

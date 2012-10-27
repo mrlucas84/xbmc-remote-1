@@ -1,8 +1,10 @@
 package ch.countableset.android.xbmcremote;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,11 +12,14 @@ import android.view.View;
 public class MainActivity extends Activity {
 
 //	 private static String TAG = "MainActivity";
+	private Vibrator haptic = null;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		
+		haptic = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
 	}
 
 	@Override
@@ -73,6 +78,7 @@ public class MainActivity extends Activity {
 				break;
 		}
 		if(command != null) {
+			haptic.vibrate(50);
 			NetworkObject object = new NetworkObject(getApplicationContext(), command);
 			new NetworkTask().execute(object);
 		}
