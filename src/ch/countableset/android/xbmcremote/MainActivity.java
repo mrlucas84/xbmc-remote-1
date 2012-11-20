@@ -1,6 +1,7 @@
 package ch.countableset.android.xbmcremote;
 
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -35,6 +36,9 @@ public class MainActivity extends Activity {
 				Intent intent = new Intent(this, SettingsActivity.class);
 				startActivity(intent);
 				return true;
+			case R.id.menu_shutdown:
+				DialogFragment dialogShutdown = new ShutdownDialog();
+				dialogShutdown.show(getFragmentManager(), "shutdown");
 			default:
 				return super.onOptionsItemSelected(item);
 		}

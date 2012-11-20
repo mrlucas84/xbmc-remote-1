@@ -1,7 +1,13 @@
 package ch.countableset.android.xbmcremote;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import android.app.Activity;
 import android.os.Bundle;
+import android.preference.EditTextPreference;
+import android.preference.Preference;
+import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceFragment;
 
 public class SettingsActivity extends Activity {
@@ -16,10 +22,35 @@ public class SettingsActivity extends Activity {
 	}
 	
 	public static class PrefsFragment extends PreferenceFragment {
+		
+		private static final String PATTERN = 
+		        "^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
+		        "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
+		        "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
+		        "([01]?\\d\\d?|2[0-4]\\d|25[0-5])$";
+		
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.preferences);
+            
+            EditTextPreference ip_address = (EditTextPreference) getPreferenceScreen().findPreference(IP_ADDRESS);
+            ip_address.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+				public boolean onPreferenceChange(Preference preference, Object value) {
+					boolean validate = false;
+					if(ipAddressValid((String) value)) {
+						validate = true;
+					}
+					return validate;
+				}
+            	
+            });
+        }
+        
+        public boolean ipAddressValid(String value) {
+        	Pattern pattern = Pattern.compile(PATTERN);
+            Matcher matcher = pattern.matcher(value);
+            return matcher.matches();
         }
     }
 }

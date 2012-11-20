@@ -1,7 +1,10 @@
 <resources>
 
     <string name="app_name">XBMC Remote</string>
+    
     <string name="menu_settings">Settings</string>
+    <string name="menu_shutdown">Shutdown</string>
+    
     <string name="title_activity_main">XBMC Remote</string>
     <string name="title_activity_settings">Settings</string>
     
@@ -26,5 +29,9 @@
     <string name="pref_port_title">Port Number</string>
     <string name="pref_port_summary">The port number of the device running XBMC</string>
     <string name="pref_port_default">8080</string>
-
+    
+    <string name="dialog_shutdown_text">Are you sure you want to shutdown?</string>
+	<string name="dialog_shutdown_ok">OK</string>
+	<string name="dialog_shutdown_cancel">Canel</string>
+	
 </resources>
