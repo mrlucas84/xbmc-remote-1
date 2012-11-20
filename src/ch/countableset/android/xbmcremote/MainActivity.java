@@ -6,13 +6,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 public class MainActivity extends Activity {
 
-//	 private static String TAG = "MainActivity";
+	private static String TAG = "MainActivity";
 	private Vibrator haptic = null;
 
 	@Override
@@ -37,7 +38,7 @@ public class MainActivity extends Activity {
 				startActivity(intent);
 				return true;
 			case R.id.menu_shutdown:
-				DialogFragment dialogShutdown = new ShutdownDialog();
+				DialogFragment dialogShutdown = new ShutdownDialog(getApplicationContext());
 				dialogShutdown.show(getFragmentManager(), "shutdown");
 			default:
 				return super.onOptionsItemSelected(item);
@@ -83,6 +84,7 @@ public class MainActivity extends Activity {
 		}
 		if(command != null) {
 			haptic.vibrate(50);
+			Log.d(TAG, "sending command: " + command);
 			NetworkObject object = new NetworkObject(getApplicationContext(), command);
 			new NetworkTask().execute(object);
 		}
