@@ -1,25 +1,40 @@
 package ch.countableset.android.xbmcremote;
 
+import java.io.UnsupportedEncodingException;
+import java.util.UUID;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.entity.StringEntity;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
+
+import com.loopj.android.http.JsonHttpResponseHandler;
 
 public class MainActivity extends Activity {
 
 	private static String TAG = "MainActivity";
 	private Vibrator haptic = null;
+	private Context mContext = null;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		mContext = getApplicationContext();
 		
 		haptic = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
 	}
@@ -85,8 +100,70 @@ public class MainActivity extends Activity {
 		if(command != null) {
 			haptic.vibrate(50);
 			Log.d(TAG, "sending command: " + command);
-			NetworkObject object = new NetworkObject(getApplicationContext(), command);
-			new NetworkTask().execute(object);
+			sendCommand(command);
 		}
+	}
+	
+	private void sendCommand(String command) {
+		String url = createUrl();
+		HttpEntity entity = null;
+		try {
+			entity = createEntity(createJSONParams(command));
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		RestClient.post(this, url, entity, "application/json", new JsonHttpResponseHandler() {
+		    @Override
+		    public void onSuccess(JSONObject response) {
+		    	try {
+		    		Log.d(TAG, response.toString());
+		    		if(!response.getString("result").equals("OK")) {
+			    		Toast.makeText(mContext, "Counld not connect!", Toast.LENGTH_SHORT).show();
+		    		}
+		    	} catch(JSONException e) {
+		    		e.printStackTrace();
+		    	}
+		    }
+		});
+	}
+	
+	private HttpEntity createEntity(JSONObject data) throws UnsupportedEncodingException {
+		return new StringEntity(data.toString());
+	}
+	
+	private String createUrl() {
+		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+		String ipAddress = sharedPref.getString(SettingsActivity.IP_ADDRESS, "");
+		String port = sharedPref.getString(SettingsActivity.PORT_NUMBER, "");
+		
+		return "http://" + ipAddress + ":" + port + "/jsonrpc";
+	}
+	
+	private JSONObject createJSONParams(String command) {
+		JSONObject jsonRequest = new JSONObject();
+		JSONObject params = new JSONObject();
+		try {
+			params.put("playerid", 1);
+			jsonRequest.put("id", UUID.randomUUID().hashCode());
+			jsonRequest.put("jsonrpc", "2.0");
+			if(command.equals("Player.SeekForward")) {
+				jsonRequest.put("method", "Player.Seek");
+				params.put("value", "smallforward");
+				jsonRequest.put("params", params);
+			} else if(command.equals("Player.SeekRewind")) {
+				jsonRequest.put("method", "Player.Seek");
+				params.put("value", "smallbackward");
+				jsonRequest.put("params", params);
+			} else {
+				jsonRequest.put("method", command);
+			}
+			if(command.equals("Player.PlayPause")
+					|| command.equals("Player.Stop")) {
+				jsonRequest.put("params", params);
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return jsonRequest;
 	}
 }
