@@ -1,5 +1,11 @@
 package ch.countableset.android.xbmcremote;
 
+import java.io.UnsupportedEncodingException;
+
+import org.apache.http.HttpEntity;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -7,10 +13,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
+
+import com.loopj.android.http.JsonHttpResponseHandler;
 
 public class ShutdownDialog extends DialogFragment {
 	
 	private Context context;
+	private static String TAG = "ShutDownDialog";
 	
 	public ShutdownDialog(Context context) {
 		this.context = context;
@@ -22,8 +32,7 @@ public class ShutdownDialog extends DialogFragment {
 		builder.setMessage(R.string.dialog_shutdown_text).setPositiveButton(R.string.dialog_shutdown_ok, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				Log.d("ShutdownDialog", "shutdown");
-				NetworkObject object = new NetworkObject(context, "System.Shutdown");
-				new NetworkTask().execute(object);
+				sendCommand("System.Shutdown");
 			}
 		}).setNegativeButton(R.string.dialog_shutdown_cancel, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
@@ -31,5 +40,28 @@ public class ShutdownDialog extends DialogFragment {
 			}
 		});
 		return builder.create();
+	}
+	
+	private void sendCommand(String command) {
+		String url = RestClient.createUrl(context);
+		HttpEntity entity = null;
+		try {
+			entity = RestClient.createEntity(RestClient.createJSONParams(command));
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		RestClient.post(context, url, entity, "application/json", new JsonHttpResponseHandler() {
+		    @Override
+		    public void onSuccess(JSONObject response) {
+		    	try {
+		    		Log.d(TAG, response.toString());
+		    		if(!response.getString("result").equals("OK")) {
+			    		Toast.makeText(context, "Counld not connect!", Toast.LENGTH_SHORT).show();
+		    		}
+		    	} catch(JSONException e) {
+		    		e.printStackTrace();
+		    	}
+		    }
+		});
 	}
 }

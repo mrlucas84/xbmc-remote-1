@@ -1,10 +1,8 @@
 package ch.countableset.android.xbmcremote;
 
 import java.io.UnsupportedEncodingException;
-import java.util.UUID;
 
 import org.apache.http.HttpEntity;
-import org.apache.http.entity.StringEntity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -12,10 +10,8 @@ import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -105,10 +101,10 @@ public class MainActivity extends Activity {
 	}
 	
 	private void sendCommand(String command) {
-		String url = createUrl();
+		String url = RestClient.createUrl(this);
 		HttpEntity entity = null;
 		try {
-			entity = createEntity(createJSONParams(command));
+			entity = RestClient.createEntity(RestClient.createJSONParams(command));
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
@@ -127,43 +123,4 @@ public class MainActivity extends Activity {
 		});
 	}
 	
-	private HttpEntity createEntity(JSONObject data) throws UnsupportedEncodingException {
-		return new StringEntity(data.toString());
-	}
-	
-	private String createUrl() {
-		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-		String ipAddress = sharedPref.getString(SettingsActivity.IP_ADDRESS, "");
-		String port = sharedPref.getString(SettingsActivity.PORT_NUMBER, "");
-		
-		return "http://" + ipAddress + ":" + port + "/jsonrpc";
-	}
-	
-	private JSONObject createJSONParams(String command) {
-		JSONObject jsonRequest = new JSONObject();
-		JSONObject params = new JSONObject();
-		try {
-			params.put("playerid", 1);
-			jsonRequest.put("id", UUID.randomUUID().hashCode());
-			jsonRequest.put("jsonrpc", "2.0");
-			if(command.equals("Player.SeekForward")) {
-				jsonRequest.put("method", "Player.Seek");
-				params.put("value", "smallforward");
-				jsonRequest.put("params", params);
-			} else if(command.equals("Player.SeekRewind")) {
-				jsonRequest.put("method", "Player.Seek");
-				params.put("value", "smallbackward");
-				jsonRequest.put("params", params);
-			} else {
-				jsonRequest.put("method", command);
-			}
-			if(command.equals("Player.PlayPause")
-					|| command.equals("Player.Stop")) {
-				jsonRequest.put("params", params);
-			}
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-		return jsonRequest;
-	}
 }
