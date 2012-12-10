@@ -3,7 +3,6 @@ package ch.countableset.android.xbmcremote;
 import java.io.UnsupportedEncodingException;
 
 import org.apache.http.HttpEntity;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
@@ -56,6 +55,11 @@ public class MainActivity extends Activity {
 		}
 	}
 
+	/** On click listener for the TableLayout Buttons. This is
+	 * assigned by the layout.
+	 * 
+	 * @param v View
+	 */
 	public void onClick(View v) {
 		String command = null;
 		switch(v.getId()) {
@@ -100,6 +104,12 @@ public class MainActivity extends Activity {
 		}
 	}
 	
+	/** Sends the pressed command from the remote to the xbmc device 
+	 * through the RestClient class.
+	 * 
+	 * @param command String of the command to send
+	 * @param v the reference of the view
+	 */
 	private void sendCommand(final String command, final View v) {
 		String url = RestClient.createUrl(this);
 		HttpEntity entity = null;
