@@ -96,11 +96,11 @@ public class MainActivity extends Activity {
 		if(command != null) {
 			haptic.vibrate(50);
 			Log.d(TAG, "sending command: " + command);
-			sendCommand(command);
+			sendCommand(command, v);
 		}
 	}
 	
-	private void sendCommand(String command) {
+	private void sendCommand(final String command, final View v) {
 		String url = RestClient.createUrl(this);
 		HttpEntity entity = null;
 		try {
@@ -111,14 +111,27 @@ public class MainActivity extends Activity {
 		RestClient.post(this, url, entity, "application/json", new JsonHttpResponseHandler() {
 		    @Override
 		    public void onSuccess(JSONObject response) {
-		    	try {
-		    		Log.d(TAG, response.toString());
-		    		if(!response.getString("result").equals("OK")) {
-			    		Toast.makeText(mContext, "Counld not connect!", Toast.LENGTH_SHORT).show();
-		    		}
-		    	} catch(JSONException e) {
-		    		e.printStackTrace();
-		    	}
+	    		Log.d(TAG, response.toString());
+	    		if(response.optJSONObject("error") != null) {
+	    			// An error has occurred, print the error message that was received
+	    			if(!response.optJSONObject("error").optString("message").equals("")) {
+	    				Toast.makeText(mContext, response.optJSONObject("error").optString("message"), Toast.LENGTH_SHORT).show();
+	    			}
+	    		} else if(response.optString("result").equals("OK")) {
+	    			// The response was OK, and if the command was stop, I was to switch the selected state
+	    			// of the play/pause button
+	    			if(command.equals("Player.Stop")) {
+	    				View play = findViewById(R.id.btn_play);
+	    				play.setSelected(false);
+	    			}
+	    		} else if(!response.optString("result").equals("OK")) {
+	    			// play/pause/rewind/fast-forward returns "results":{"speed":0} instead of OK, thus
+	    			// check if play pause was pressed and change the state
+	    			if(command.equals("Player.PlayPause") && v.isSelected())
+	    				v.setSelected(false);
+	    			else if(command.equals("Player.PlayPause") && !v.isSelected())
+	    				v.setSelected(true);
+	    		}
 		    }
 		});
 	}
