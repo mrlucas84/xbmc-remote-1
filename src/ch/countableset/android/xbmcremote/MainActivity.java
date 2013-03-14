@@ -142,7 +142,7 @@ public class MainActivity extends Activity {
 	    			// check if play pause was pressed and change the state
 	    			if(command.equals("Player.PlayPause") && response.optJSONObject("result").optInt("speed") == 1)
 	    				v.setSelected(false);
-	    			else // if(command.equals("Player.PlayPause") && !v.isSelected())
+	    			else
 	    				v.setSelected(true);
 	    		}
 		    }
