@@ -138,11 +138,11 @@ public class MainActivity extends Activity {
 	    				play.setSelected(false);
 	    			}
 	    		} else if(!response.optString("result").equals("OK")) {
-	    			// play/pause/rewind/fast-forward returns "results":{"speed":0} instead of OK, thus
+	    			// play/pause/rewind/fast-forward returns "result":{"speed":0} instead of OK, thus
 	    			// check if play pause was pressed and change the state
-	    			if(command.equals("Player.PlayPause"))
+	    			if(command.equals("Player.PlayPause") && response.optJSONObject("result").optInt("speed") == 1)
 	    				v.setSelected(false);
-	    			else if(command.equals("Player.PlayPause"))
+	    			else // if(command.equals("Player.PlayPause") && !v.isSelected())
 	    				v.setSelected(true);
 	    		}
 		    }
