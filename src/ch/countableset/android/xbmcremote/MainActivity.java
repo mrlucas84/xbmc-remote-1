@@ -84,6 +84,9 @@ public class MainActivity extends Activity {
 			case R.id.btn_home:
 				command =  "Input.Home";
 				break;
+			case R.id.btn_playback_menu:
+				command = "Input.ShowOSD";
+				break;
 			case R.id.btn_play:
 				command = "Player.PlayPause";
 				break;
@@ -137,9 +140,9 @@ public class MainActivity extends Activity {
 	    		} else if(!response.optString("result").equals("OK")) {
 	    			// play/pause/rewind/fast-forward returns "results":{"speed":0} instead of OK, thus
 	    			// check if play pause was pressed and change the state
-	    			if(command.equals("Player.PlayPause") && v.isSelected())
+	    			if(command.equals("Player.PlayPause"))
 	    				v.setSelected(false);
-	    			else if(command.equals("Player.PlayPause") && !v.isSelected())
+	    			else if(command.equals("Player.PlayPause"))
 	    				v.setSelected(true);
 	    		}
 		    }

@@ -119,6 +119,18 @@
             android:contentDescription="@string/btn_home"
             android:onClick="onClick" />
         
+        <ImageButton
+            android:id="@+id/btn_playback_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/playback_menu"
+            android:background="@null"
+            android:gravity="center"
+            android:layout_span="6"
+            android:padding="20dip"
+            android:contentDescription="@string/btn_playback_menu"
+            android:onClick="onClick" />
+        
     </TableRow>
     
     

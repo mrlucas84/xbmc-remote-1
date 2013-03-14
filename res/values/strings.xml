@@ -15,6 +15,7 @@
     <string name="btn_select">Select</string>
     <string name="btn_back">Back</string>
     <string name="btn_home">Home</string>
+    <string name="btn_playback_menu">Playback Menu</string>
     <string name="btn_rewind">Rewind</string>
     <string name="btn_play">Play</string>
     <string name="btn_stop">Stop</string>
