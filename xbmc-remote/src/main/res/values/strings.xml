@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">XBMC Remote</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_settings">Settings</string>
+    <string name="menu_shutdown">Shutdown</string>
+
+    <string name="btn_left">Left</string>
+    <string name="btn_right">Right</string>
+    <string name="btn_up">Up</string>
+    <string name="btn_down">Down</string>
+    <string name="btn_select">Select</string>
+    <string name="btn_back">Back</string>
+    <string name="btn_home">Home</string>
+    <string name="btn_playback_menu">Playback Menu</string>
+    <string name="btn_rewind">Rewind</string>
+    <string name="btn_play">Play</string>
+    <string name="btn_stop">Stop</string>
+    <string name="btn_fastforward">Forward</string>
+
+    <string name="pref_cat_network">Network</string>
+
+    <string name="pref_ip_address_title">IP Address</string>
+    <string name="pref_ip_address_summary">The IP Address of the device running XBMC</string>
+    <string name="pref_ip_address_default">192.168.1.2</string>
+
+    <string name="pref_port_title">Port Number</string>
+    <string name="pref_port_summary">The port number of the device running XBMC</string>
+    <string name="pref_port_default">8080</string>
+
+    <string name="dialog_shutdown_text">Are you sure you want to shutdown?</string>
+    <string name="dialog_shutdown_ok">OK</string>
+    <string name="dialog_shutdown_cancel">Canel</string>
+
+</resources>
