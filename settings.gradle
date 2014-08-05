@@ -1,1 +1,1 @@
-include ':xbmc-remote'
+include ':app'
