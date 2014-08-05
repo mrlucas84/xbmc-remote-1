@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativelayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+
+    <ImageButton
+        android:id="@+id/btn_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/up_arrow"
+        android:background="@null"
+        android:layout_centerHorizontal="true"
+        android:padding="30dp"
+        android:contentDescription="@string/btn_up"
+        android:onClick="onClick" />
+
+    <ImageButton
+        android:id="@+id/btn_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:contentDescription="@string/btn_left"
+        android:padding="30dp"
+        android:src="@drawable/left_arrow"
+        android:onClick="onClick"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/btn_up"
+        android:layout_toLeftOf="@+id/btn_select" />
+
+    <ImageButton
+        android:id="@+id/btn_select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:contentDescription="@string/btn_select"
+        android:padding="30dp"
+        android:src="@drawable/select"
+        android:onClick="onClick"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/btn_up" />
+
+    <ImageButton
+        android:id="@+id/btn_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/right_arrow"
+        android:background="@null"
+        android:padding="30dp"
+        android:contentDescription="@string/btn_right"
+        android:onClick="onClick"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/btn_up"
+        android:layout_toRightOf="@+id/btn_select" />
+
+    <ImageButton
+        android:id="@+id/btn_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/down_arrow"
+        android:background="@null"
+        android:padding="30dp"
+        android:contentDescription="@string/btn_down"
+        android:onClick="onClick"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/btn_select" />
+
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/back"
+        android:background="@null"
+        android:padding="25dp"
+        android:contentDescription="@string/btn_back"
+        android:onClick="onClick"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/btn_down"
+        android:layout_toLeftOf="@+id/btn_home"/>
+
+    <ImageButton
+        android:id="@+id/btn_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/home"
+        android:background="@null"
+        android:padding="25dp"
+        android:contentDescription="@string/btn_home"
+        android:onClick="onClick"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/btn_down" />
+
+    <ImageButton
+        android:id="@+id/btn_playback_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/playback_menu"
+        android:background="@null"
+        android:padding="25dp"
+        android:contentDescription="@string/btn_playback_menu"
+        android:onClick="onClick"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/btn_down"
+        android:layout_toRightOf="@+id/btn_home" />
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/relativelayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/btn_back"
+        android:gravity="top|center_horizontal"
+        android:paddingLeft="-16dp"
+        android:paddingRight="-16dp">
+
+        <ImageButton
+            android:id="@+id/btn_rewind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/rewind"
+            android:background="@null"
+            android:padding="25dp"
+            android:contentDescription="@string/btn_rewind"
+            android:onClick="onClick"
+            android:layout_centerHorizontal="true"
+            android:layout_toLeftOf="@+id/btn_play" />
+
+        <ImageButton
+            android:id="@+id/btn_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/play_pause_button"
+            android:background="@null"
+            android:padding="25dp"
+            android:contentDescription="@string/btn_play"
+            android:onClick="onClick"
+            android:layout_centerHorizontal="true" />
+
+        <ImageButton
+            android:id="@+id/btn_stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/stop"
+            android:background="@null"
+            android:padding="25dp"
+            android:contentDescription="@string/btn_stop"
+            android:onClick="onClick"
+            android:layout_centerHorizontal="true"
+            android:layout_toRightOf="@+id/btn_play" />
+
+        <ImageButton
+            android:id="@+id/btn_fastforward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/forward"
+            android:background="@null"
+            android:padding="25dp"
+            android:contentDescription="@string/btn_fastforward"
+            android:onClick="onClick"
+            android:layout_toRightOf="@+id/btn_stop" />
+    </RelativeLayout>
+</RelativeLayout>
