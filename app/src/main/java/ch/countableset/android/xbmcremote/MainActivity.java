@@ -1,28 +1,23 @@
 package ch.countableset.android.xbmcremote;
 
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.DialogFragment;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
 import android.widget.Toast;
+
+import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.apache.http.HttpEntity;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
-
-import com.loopj.android.http.JsonHttpResponseHandler;
 
 public class MainActivity extends Activity {
 
