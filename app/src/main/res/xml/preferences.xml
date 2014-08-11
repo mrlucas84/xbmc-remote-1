@@ -7,7 +7,7 @@
             android:title="@string/pref_ip_address_title"
             android:summary="@string/pref_ip_address_summary"
             android:defaultValue="@string/pref_ip_address_default"
-            android:inputType="number" />
+            android:inputType="phone" />
 
         <EditTextPreference
             android:key="port"
